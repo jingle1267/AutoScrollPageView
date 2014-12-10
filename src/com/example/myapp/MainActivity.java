@@ -10,10 +10,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.*;
 
 /**
  * 自动切换效果Demo
@@ -22,8 +19,7 @@ public class MainActivity extends Activity {
 
     private AutoScrollViewPager viewPager;
     private List<ImageView> imageViewList;
-    private ArrayList<RadioButton> radioButtonList;
-    private RadioGroup radioGroup;
+    private LinearLayout indicator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,35 +53,35 @@ public class MainActivity extends Activity {
         // viewPager.setCurrentItem(Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % imageViewList.size());
         viewPager.setCurrentItem(0);
 
-        radioButtonList = new ArrayList<RadioButton>();
-        RadioButton radioButton1 = new RadioButton(this);
-        radioButton1.setButtonDrawable(R.drawable.radio_button);
-        RadioButton radioButton2 = new RadioButton(this);
-        radioButton2.setButtonDrawable(R.drawable.radio_button);
-        RadioButton radioButton3 = new RadioButton(this);
-        radioButton3.setButtonDrawable(R.drawable.radio_button);
-        RadioButton radioButton4 = new RadioButton(this);
-        radioButton4.setButtonDrawable(R.drawable.radio_button);
-        radioButtonList.add(radioButton1);
-        radioButtonList.add(radioButton2);
-        radioButtonList.add(radioButton3);
-        radioButtonList.add(radioButton4);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12, 12);
+        layoutParams.setMargins(4, 4, 4, 4);
+        View v1 = new View(this);
+        v1.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
+        View v2 = new View(this);
+        v2.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
+        View v3 = new View(this);
+        v3.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
+        View v4 = new View(this);
+        v4.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
 
-        radioGroup = (RadioGroup) findViewById(R.id.indicator);
-        radioGroup.addView(radioButton1, 0);
-        radioGroup.addView(radioButton2, 1);
-        radioGroup.addView(radioButton3, 2);
-        radioGroup.addView(radioButton4, 3);
+        indicator = (LinearLayout) findViewById(R.id.indicator);
+        indicator.addView(v1, 0, layoutParams);
+        indicator.addView(v2, 1, layoutParams);
+        indicator.addView(v3, 2, layoutParams);
+        indicator.addView(v4, 3, layoutParams);
 
-        Log.d("test", "radio button count : " + radioGroup.getChildCount());
+        Log.d("test", "radio button count : " + indicator.getChildCount());
     }
 
     public class MyOnPageChangeListener implements OnPageChangeListener {
 
         @Override
         public void onPageSelected(int position) {
-            Log.d("test", "" + radioGroup.getChildAt(position));
-            ((RadioButton) radioGroup.getChildAt(position)).setChecked(true);
+            Log.d("test", "" + indicator.getChildAt(position));
+            for (int i = 0; i < indicator.getChildCount(); i++) {
+                indicator.getChildAt(i).setBackgroundResource(R.drawable.banner_pagecontrol_normal);
+            }
+            indicator.getChildAt(position).setBackgroundResource(R.drawable.banner_pagecontrol_selected);
             Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
         }
 
@@ -101,14 +97,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        // stop auto scroll when onPause
         viewPager.stopAutoScroll();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // start auto scroll when onResume
         viewPager.startAutoScroll();
     }
 
