@@ -28,7 +28,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auto_scroll_view_pager_demo);
         init();
-        Log.d("test", "radio button count : " + indicator.getChildCount());
     }
 
     private void init() {
@@ -37,6 +36,7 @@ public class MainActivity extends Activity {
         viewPager = (AutoScrollViewPager) findViewById(R.id.view_pager);
         indicator = (LinearLayout) findViewById(R.id.indicator);
 
+        /** 创建view */
         for (int i = 0; i < ids.length; i++) {
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             ImageView view = new ImageView(this);
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 
-        viewPager.setInterval(1000);
+        viewPager.setInterval(4000);
         viewPager.startAutoScroll();
         viewPager.setCycle(true);
         int pos = Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % imageViewList.size();
@@ -114,6 +114,9 @@ public class MainActivity extends Activity {
         @Override
         public void destroyItem(ViewGroup container, int position,
                                 Object object) {
+            if (imageViewList.size() <= 3) {
+                return;
+            }
             container.removeView(imageViewList.get(position % imageViewList.size()));
 
         }
@@ -132,7 +135,13 @@ public class MainActivity extends Activity {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            container.addView(imageViewList.get(position % imageViewList.size()), 0);
+            ImageView imageView = imageViewList.get(position % imageViewList.size());
+            if (imageView.getParent() != null) {
+                ViewGroup viewGroup = (ViewGroup) imageView.getParent();
+                viewGroup.removeView(imageView);
+
+            }
+            container.addView(imageView, 0);
             imageViewList.get(position % imageViewList.size()).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
