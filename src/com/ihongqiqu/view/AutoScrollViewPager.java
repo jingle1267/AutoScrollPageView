@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.ihongqiqu.view;
 
 import java.lang.reflect.Field;
 

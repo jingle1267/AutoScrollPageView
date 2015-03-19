@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.ihongqiqu.view;
 
 import android.content.Context;
 import android.view.animation.Interpolator;

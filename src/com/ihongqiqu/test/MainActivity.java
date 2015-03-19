@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.ihongqiqu.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.example.myapp.R;
+import com.ihongqiqu.view.AutoScrollViewPager;
 
 /**
  * 自动切换效果Demo
