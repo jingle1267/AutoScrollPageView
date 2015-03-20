@@ -29,7 +29,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.myapp" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="b27ac21f-e58e-44d2-a8a3-1059960407a7" name="Default" comment="" />
+    <list default="true" readonly="true" id="b27ac21f-e58e-44d2-a8a3-1059960407a7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    </list>
     <ignored path="myapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/test/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33665836" vertical-offset="420" max-vertical-offset="2430">
-              <caret line="37" column="72" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="2430">
+              <caret line="107" column="32" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3616#3617#0" expanded="true" />
@@ -70,10 +72,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8097686" vertical-offset="150" max-vertical-offset="600">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AutoScrollViewPager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/view/AutoScrollViewPager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="4830">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1877" max-vertical-offset="4830">
               <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
               <folding />
             </state>
@@ -110,8 +122,8 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/example/myapp/InfiniteViewPagerTestActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/myapp/MainActivity.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -585,7 +597,7 @@
       <workItem from="1421142437123" duration="100000" />
       <workItem from="1421142570308" duration="401000" />
       <workItem from="1423798428973" duration="1329000" />
-      <workItem from="1426764472266" duration="778000" />
+      <workItem from="1426764472266" duration="3249000" />
     </task>
     <task id="LOCAL-00001" summary="[Change] Change Indicator.">
       <created>1418231941295</created>
@@ -603,7 +615,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3752000" />
+    <option name="totallyTimeSpent" value="6223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="713" extended-state="6" />
@@ -1027,14 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7712082" vertical-offset="0" max-vertical-offset="390">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2173913" vertical-offset="0" max-vertical-offset="414">
@@ -1061,14 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/view/AutoScrollViewPager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="4830">
-          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/view/CustomDurationScroller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="675">
@@ -1077,10 +1073,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/view/AutoScrollViewPager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1877" max-vertical-offset="4830">
+          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ihongqiqu/test/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33665836" vertical-offset="420" max-vertical-offset="2430">
-          <caret line="37" column="72" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="2430">
+          <caret line="107" column="32" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3616#3617#0" expanded="true" />
@@ -1088,6 +1092,14 @@
             <element signature="e#4725#4997#0" expanded="true" />
             <element signature="e#4996#4997#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8097686" vertical-offset="150" max-vertical-offset="600">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
