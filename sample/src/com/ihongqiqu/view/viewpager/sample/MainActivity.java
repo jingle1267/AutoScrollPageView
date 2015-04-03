@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
 
     private int[] ids = {R.drawable.banner1, R.drawable.banner2/*, R.drawable.banner3, R.drawable.banner4*/};
 
+    private int realPageCount;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,24 +39,13 @@ public class MainActivity extends Activity {
         viewPager = (AutoScrollViewPager) findViewById(R.id.view_pager);
         indicator = (LinearLayout) findViewById(R.id.indicator);
 
-        /** 创建view */
-        for (int i = 0; i < ids.length; i++) {
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            ImageView view = new ImageView(this);
-            view.setLayoutParams(params);
-            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            view.setImageResource(ids[i]);
-            imageViewList.add(view);
-
-            View v = new View(this);
-            v.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12, 12);
-            layoutParams.setMargins(4, 4, 4, 4);
-            if (i == 0) {
-                v.setBackgroundResource(R.drawable.banner_pagecontrol_selected);
-            }
-            indicator.addView(v, layoutParams);
+        addView();
+        addIndicators();
+        realPageCount = imageViewList.size();
+        if (imageViewList.size() == 2) {
+            addView();
         }
+
 
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
@@ -73,11 +64,35 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void addView() {
+        for (int i = 0; i < ids.length; i++) {
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            ImageView view = new ImageView(this);
+            view.setLayoutParams(params);
+            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            view.setImageResource(ids[i]);
+            imageViewList.add(view);
+        }
+    }
+
+    private void addIndicators() {
+        for (int i = 0; i < ids.length; i++) {
+            View v = new View(this);
+            v.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12, 12);
+            layoutParams.setMargins(4, 4, 4, 4);
+            if (i == 0) {
+                v.setBackgroundResource(R.drawable.banner_pagecontrol_selected);
+            }
+            indicator.addView(v, layoutParams);
+        }
+    }
+
     public class MyOnPageChangeListener implements OnPageChangeListener {
 
         @Override
         public void onPageSelected(int position) {
-            int pos = position % imageViewList.size();
+            int pos = position % realPageCount;
             Log.d("test", "" + indicator.getChildAt(pos));
             for (int i = 0; i < indicator.getChildCount(); i++) {
                 indicator.getChildAt(i).setBackgroundResource(R.drawable.banner_pagecontrol_normal);
