@@ -14,6 +14,8 @@ import android.view.animation.Interpolator;
 
 /**
  * Auto Scroll View Pager
+ * PS: 需要使用 AutoScrollViewPagerAdapter
+ *
  * <ul>
  * <strong>Basic Setting and Usage</strong>
  * <li>{@link #startAutoScroll()} start auto scroll, or {@link #startAutoScroll(int)} start auto scroll delayed</li>
@@ -70,6 +72,9 @@ public class AutoScrollViewPager extends ViewPager {
 
     public static final int        SCROLL_WHAT                 = 0;
 
+    private int viewPagerStartItem = 30;
+    private boolean isFirst = true;
+
     public AutoScrollViewPager(Context paramContext) {
         super(paramContext);
         init();
@@ -83,6 +88,46 @@ public class AutoScrollViewPager extends ViewPager {
     private void init() {
         handler = new MyHandler();
         setViewPagerScroller();
+    }
+
+    public void onResume() {
+        if (getAdapter() == null) {
+            return;
+        }
+        if (isFirst) {
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    int curItem = viewPagerStartItem - viewPagerStartItem % getAdapter().getCount() + getAdapter().getCount() - 2;
+                    setCurrentItem(curItem, false);
+
+
+                    setAutoScrollDurationFactor(10);
+                    setScrooll(true);
+                    scrollOnce();
+                    scrollOnce();
+                    startAutoScroll();
+                }
+            }, 200);
+            isFirst = false;
+        } else {
+            if (getAdapter().getCount() > 1) {
+                startAutoScroll();
+                setCycle(true);
+                setScrooll(true);
+            } else {
+                stopAutoScroll();
+                setCycle(false);
+                setScrooll(false);
+            }
+        }
+    }
+
+    public void onPause() {
+        if (getAdapter() == null) {
+            return;
+        }
+        stopAutoScroll();
     }
 
     /**
