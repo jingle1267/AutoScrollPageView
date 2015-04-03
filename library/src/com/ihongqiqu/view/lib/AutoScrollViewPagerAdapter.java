@@ -1,5 +1,6 @@
 package com.ihongqiqu.view.lib;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,13 @@ public abstract class AutoScrollViewPagerAdapter extends PagerAdapter {
 
     private List<View> viewList;
     private int realPageCount = 1;
+    private int pageCount = 0;
 
-    public AutoScrollViewPagerAdapter() {
-        this.viewList = new ArrayList<>();
+    private Context context;
+
+    public AutoScrollViewPagerAdapter(Context context) {
+        viewList = new ArrayList<>();
+        this.context = context;
 
         List<View> realViews = buildViews();
         if (realViews != null && realViews.size() > 0) {
@@ -28,6 +33,7 @@ public abstract class AutoScrollViewPagerAdapter extends PagerAdapter {
             if (realPageCount == 2) {
                 this.viewList.addAll(buildViews());
             }
+            pageCount = this.viewList.size();
         }
     }
 
@@ -43,6 +49,14 @@ public abstract class AutoScrollViewPagerAdapter extends PagerAdapter {
      */
     public int getRealPageCount () {
         return realPageCount;
+    }
+
+    /**
+     * 获取转化后的PageCount
+     * @return
+     */
+    public int getPageCount() {
+        return pageCount;
     }
 
     @Override

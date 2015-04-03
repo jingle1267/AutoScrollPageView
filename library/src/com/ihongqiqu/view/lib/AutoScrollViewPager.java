@@ -9,6 +9,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
 
@@ -73,7 +74,6 @@ public class AutoScrollViewPager extends ViewPager {
     public static final int        SCROLL_WHAT                 = 0;
 
     private int viewPagerStartItem = 30;
-    private boolean isFirst = true;
 
     public AutoScrollViewPager(Context paramContext) {
         super(paramContext);
@@ -88,29 +88,44 @@ public class AutoScrollViewPager extends ViewPager {
     private void init() {
         handler = new MyHandler();
         setViewPagerScroller();
+
     }
 
+    /**
+     * 初始化的时候调用
+     */
+    public void start() {
+        if (getAdapter() == null) {
+            return;
+        }
+
+        final AutoScrollViewPagerAdapter adapter = (AutoScrollViewPagerAdapter) getAdapter();
+        setVisibility(INVISIBLE);
+        int curItem = viewPagerStartItem - viewPagerStartItem % adapter.getPageCount() + adapter.getPageCount() - 2;
+        setCurrentItem(curItem, false);
+        setScrooll(true);
+        scrollOnce();
+        scrollOnce();
+        startAutoScroll();
+        // setAutoScrollDurationFactor(10);
+
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                setVisibility(VISIBLE);
+            }
+        }, 100);
+    }
+
+    /**
+     * onResume的时候调用
+     */
     public void onResume() {
         if (getAdapter() == null) {
             return;
         }
-        if (isFirst) {
-            postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    int curItem = viewPagerStartItem - viewPagerStartItem % getAdapter().getCount() + getAdapter().getCount() - 2;
-                    setCurrentItem(curItem, false);
 
-
-                    setAutoScrollDurationFactor(10);
-                    setScrooll(true);
-                    scrollOnce();
-                    scrollOnce();
-                    startAutoScroll();
-                }
-            }, 200);
-            isFirst = false;
-        } else {
             if (getAdapter().getCount() > 1) {
                 startAutoScroll();
                 setCycle(true);
@@ -120,9 +135,11 @@ public class AutoScrollViewPager extends ViewPager {
                 setCycle(false);
                 setScrooll(false);
             }
-        }
     }
 
+    /**
+     * onPause的时候调用
+     */
     public void onPause() {
         if (getAdapter() == null) {
             return;

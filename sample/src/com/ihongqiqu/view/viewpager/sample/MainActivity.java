@@ -19,7 +19,7 @@ import com.ihongqiqu.view.lib.AutoScrollViewPagerAdapter;
 public class MainActivity extends Activity {
 
     private AutoScrollViewPager viewPager;
-    private AutoScrollViewPagerAdapter pagerAdapter;
+    AutoScrollViewPagerAdapter pagerAdapter;
     private LinearLayout indicator;
 
     private int[] ids = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3/*, R.drawable.banner4*/};
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 
         addIndicators();
 
-        pagerAdapter = new AutoScrollViewPagerAdapter() {
+        pagerAdapter = new AutoScrollViewPagerAdapter(MainActivity.this) {
 
             @Override
             public List<View> buildViews() {
@@ -53,6 +53,10 @@ public class MainActivity extends Activity {
 
         viewPager.setInterval(2000);
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
+        viewPager.setAutoScrollDurationFactor(10);
+
+        viewPager.start();
+
 
     }
 
