@@ -19,7 +19,7 @@ import com.ihongqiqu.view.lib.AutoScrollViewPagerAdapter;
 public class MainActivity extends Activity {
 
     private AutoScrollViewPager viewPager;
-    AutoScrollViewPagerAdapter pagerAdapter;
+    private AutoScrollViewPagerAdapter pagerAdapter;
     private LinearLayout indicator;
 
     private int[] ids = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3/*, R.drawable.banner4*/};
