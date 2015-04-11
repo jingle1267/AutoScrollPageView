@@ -6,17 +6,16 @@ AutoScrollPageView
 
 使用方法：
 ---------
-1. 导入library源码
 
-2. 调用AutoScrollPageView和设置参数
+***1.导入library源码***
 
-```xml
+***2.调用AutoScrollPageView和设置参数***
+  ```xml
 <com.ihongqiqu.view.lib.AutoScrollViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-
 ```java
 @Override
 public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public void onCreate(Bundle savedInstanceState) {
     // TODO others
 }
 ```
-
 ```java
 private List<View> addView() {
     List<View> list = new ArrayList<>();
@@ -57,7 +55,6 @@ private List<View> addView() {
     return list;
 }
 ```
-
 ```java
 @Override
 protected void onPause() {
@@ -71,12 +68,12 @@ protected void onResume() {
     viewPager.onResume();
 }
 ```
+ 
+***3.设置指示器（重要）***
 
-4. 设置指示器（重要）
-
-设置AutoScrollViewPager时添加监听
 ```java
-    viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
+// 设置AutoScrollViewPager时添加监听
+viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 ```
 
 ```java
@@ -100,7 +97,7 @@ public class MyOnPageChangeListener implements OnPageChangeListener {
     }
 ```
 
-PS:Android-ViewPagerIndicator暂未使用
+PS: Demo中暂未使用Android-ViewPagerIndicator
 
 开发者(Developer)
 ----------------
