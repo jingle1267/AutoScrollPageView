@@ -4,6 +4,9 @@ AutoScrollPageView
 实现ViewPager自动播放，循环滚动的效果及使用。
 解决当少于4页的时候，有的页面无法显示的bug;
 
+效果图：
+![PREVIEW](https://raw.githubusercontent.com/jingle1267/AutoScrollPageView/master/preview.gif)
+
 使用方法：
 ---------
 

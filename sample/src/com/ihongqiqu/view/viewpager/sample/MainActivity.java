@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
         for (int i = 0; i < ids.length; i++) {
             View v = new View(this);
             v.setBackgroundResource(R.drawable.banner_pagecontrol_normal);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12, 12);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(24, 24);
             layoutParams.setMargins(4, 4, 4, 4);
             if (i == 0) {
                 v.setBackgroundResource(R.drawable.banner_pagecontrol_selected);
